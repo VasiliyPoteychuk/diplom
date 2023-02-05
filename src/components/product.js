@@ -9,20 +9,33 @@ import { useDispatch } from "react-redux";
 import { addFavorite } from "../store/favoriteSlice";
 export default function Product(){
   const [product, setProduct] = useState({})
-  const [images, setImages] = useState(product.images)
+  const [picture, setPicture] = useState([])
+  const [pic, setPic] = useState('')
   const {id} = useParams()
   const dispatch = useDispatch()
 
   useEffect(()=> {
     productApi.getProduct(id)
-    .then(resp => setProduct(resp.data))
+    .then(resp => {
+      setProduct(resp.data)
+      setPicture(resp.data.images)
+      setPic(resp.data.thumbnail)
+    })
+    
   },[id])
 
   return(
     <div>
       <Header/>
       <div className="d-flex border">
-        <div><img src={product.thumbnail}/></div>
+        <div>
+          <img src={pic}/>
+          <div>
+            {picture.map(im=> 
+                <img src={im} style={{width:100 + "px"}} onClick={()=>setPic(im)}/>
+            )}
+          </div>
+        </div>
         <div>
           <h1>{product.brand} {product.title}</h1>
           <h4></h4>
