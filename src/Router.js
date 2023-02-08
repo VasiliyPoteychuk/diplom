@@ -7,6 +7,7 @@ import Cart from "./header/cart"
 import ProductsInCategory from "./header/productsInCategory";
 import Favorite from "./components/favourite";
 import AuthForm from "./auth/authForm";
+import Search from "./header/search";
 
 export default createBrowserRouter([
   {
@@ -37,4 +38,5 @@ export default createBrowserRouter([
     path: "/products/category/:cat",
     element: <ProductsInCategory/>
   },
+ 
 ]);

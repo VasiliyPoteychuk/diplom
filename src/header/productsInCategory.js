@@ -19,14 +19,7 @@ export default function ProductsInCategory(){
     <div>
       <Header/>
       <div className="d-flex gap-5  flex-wrap">
-        {products.map(el=> 
-          <div>
-            <Card key={el.id} product={el}/>  
-            <div className="btn-group">
-              <AddToCart product={el}/>
-              <AddToFavorite product={el}/>
-            </div>
-          </div>
+        {products.map(el=><Card key={el.id} product={el}/>
         )}
       </div>
     </div>

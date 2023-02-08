@@ -2,19 +2,30 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts, productsSelect, statusSelect } from "../store/productsSlice"
 import Card from "./card"
-import { NavLink } from "react-router-dom"
-import AddToCart from "./addToCard"
 import Header from "../header/header"
-import { addFavorite } from "../store/favoriteSlice"
+import { searchDataSelect, searchItemsSelect, searchProduct } from "../store/searchSlice"
 
 export default function Products(){
   const products = useSelector(productsSelect);
   const status = useSelector(statusSelect);
+  const searchData = useSelector(searchDataSelect);
+  const foundedProducts = useSelector(searchItemsSelect)
   const dispatch = useDispatch();
   const cat=[];
   products.map(prod => cat.push(prod.category));
-  const categories=Array.from(new Set(cat));
   
+  useEffect(()=>{
+    const elements =[]
+    products.filter(el => {
+      const elem = Object.values(el).toString().toLowerCase()
+      
+      if(elem.includes(searchData.toLowerCase())){
+        console.log(el)
+        elements.push(el)
+      }
+    })
+    dispatch(searchProduct(elements))
+  },[searchData])
 
   useEffect(()=> {
     dispatch(fetchProducts())
@@ -28,19 +39,16 @@ export default function Products(){
     <div className="root position-relative">
       {status === 'loading' && <h1 className="  auth-form" role='alert'>Загрузка</h1>}
       <Header/>
-      <div className=" m-5  d-flex flex-wrap gap-5">
-        {products.map(el=>
-          <div key={el.id} className="card m-3">
-            <NavLink to={`products/${el.id}`}  >
-              <Card  product={el}/>
-            </NavLink>
-            <div className="btn-group">
-              <AddToCart product={el}/>
-              <button className="btn btn-warning" onClick={()=> dispatch(addFavorite(el))}>добавить в избраное</button>
-            </div>
-          </div>
-        )}
-      </div>
+      {foundedProducts.length>0 ? 
+        <div className="container  m-auto  d-flex flex-wrap gap-5">
+          {foundedProducts.map(el=><Card key={el.id}  product={el}/>)}          
+        </div>
+        :
+         <div className="container  m-auto  d-flex flex-wrap gap-5">
+          {products.map(el=><Card key={el.id}  product={el}/>)}          
+        </div>
+      }
+     
       
     </div>
     

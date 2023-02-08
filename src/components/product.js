@@ -7,6 +7,7 @@ import AddToFavorite from "./addToFavorite";
 import Rating from "./rating";
 import { useDispatch } from "react-redux";
 import { addFavorite } from "../store/favoriteSlice";
+
 export default function Product(){
   const [product, setProduct] = useState({})
   const [picture, setPicture] = useState([])
@@ -32,7 +33,7 @@ export default function Product(){
           <img src={pic}/>
           <div>
             {picture.map(im=> 
-                <img src={im} style={{width:100 + "px"}} onClick={()=>setPic(im)}/>
+                <img key={im.id} src={im}  style={{width:100 + "px"}} onClick={()=>setPic(im)}/>
             )}
           </div>
         </div>

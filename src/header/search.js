@@ -1,29 +1,26 @@
-import { useEffect, useState } from "react"
-import productsAPI from "../api/productsAPI"
+import { useState } from "react"
+import { useDispatch} from "react-redux";
+import { search } from "../store/searchSlice";
 
 
 export default function SearchInput(){
-  const [search, setSearch] = useState('')
-  const [searchProd, setSearchProd] = useState()
-  function searchSubmit(e){
-    e.preventDefault()
+  const [searchData, setSearchData] = useState('');
+  const dispatch = useDispatch()
 
-    
+  function addSearch(e){
+    e.preventDefault()
+    dispatch(search(searchData))
+
   }
-  // useEffect(()=>{
-  //       productsAPI.searchProduct(search)
-  //       .then(resp => console.log(resp))
-  //     },[searchSubmit])
 
   return(
-    <form onSubmit={searchSubmit}>
+    <form onSubmit={(e)=> addSearch(e)}>
       <input 
-        type='text'
-        name="search"
-        placeholder="Search.." 
-        onChange={(e) => setSearch(e.target.value)}
+        type='search'
+        placeholder="search..."
+        onChange={(e) => setSearchData(e.target.value)}
       />
-      <button type="submit">поиск</button>
+      <input type='submit' value='поиск'/>
     </form>
   )
 }
