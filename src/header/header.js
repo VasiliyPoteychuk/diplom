@@ -19,7 +19,7 @@ export default function Header(){
     }
 
   return(
-    <header className=" d-flex justify-content-center gap-5 align-items-center position-sticky  top-0 border-bottom" >
+    <header className=" d-flex justify-content-around gap-5 align-items-center position-sticky  top-0 border-bottom" >
       <NavLink to={'/'} onClick={()=> cleanSearch()}><img src={brandLogo}  style={{width:150+'px'}}/></NavLink>
       <CatalogProducts/>
       

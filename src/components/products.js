@@ -18,7 +18,6 @@ export default function Products(){
     const elements =[]
     products.filter(el => {
       const elem = Object.values(el).toString().toLowerCase()
-      
       if(elem.includes(searchData.toLowerCase())){
         console.log(el)
         elements.push(el)
@@ -40,11 +39,11 @@ export default function Products(){
       {status === 'loading' && <h1 className="  auth-form" role='alert'>Загрузка</h1>}
       <Header/>
       {foundedProducts.length>0 ? 
-        <div className="container  m-auto  d-flex flex-wrap gap-5">
+        <div className="w-75  m-auto  d-flex flex-wrap gap-5">
           {foundedProducts.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
         :
-         <div className="container  m-auto  d-flex flex-wrap gap-5">
+         <div className="w-75  m-auto  d-flex flex-wrap gap-5">
           {products.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
       }
