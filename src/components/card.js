@@ -13,11 +13,11 @@ export default function Card({product}){
     <div className="card  shadow mt-5">
       <div className="card-body">
         <NavLink to={`products/${product.id}`}>
-           <img src={product.thumbnail} className='card-img-top  my-1' style={{height:300+'px', width:300 +'px'}} alt='картинка'/>
+           <img src={product.thumbnail} className='card-img-top  my-1' style={{height:250+'px', width:300 +'px'}} alt='картинка'/>
         </NavLink>
         <div className="card-body d-flex gap-3">
-          <h5 className="card-text">{product.price}$</h5>
-          <h6 className="card-text bg-dark-subtle text-danger">-{product.discountPercentage}%</h6>
+          <h2 className="card-text">{product.price}$</h2>
+          <h6 className="card-text text-danger bg-warning rounded-circle text-center d-flex align-items-center p-2">-{product.discountPercentage}%</h6>
           <h6 className="card-text text-decoration-line-through text-dark">{Math.round(product.price/(100-product.discountPercentage)*100)}$</h6>
         </div>
         

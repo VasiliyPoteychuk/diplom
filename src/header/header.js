@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import { search, searchProduct } from "../store/searchSlice";
 
 export default function Header(){
-  const [searchData, setSearchData] = useState('')
   const dispatch = useDispatch()
 
     function cleanSearch(){
@@ -19,15 +18,13 @@ export default function Header(){
     }
 
   return(
-    <header className=" d-flex justify-content-around gap-5 align-items-center position-sticky  top-0 border-bottom" >
-      <NavLink to={'/'} onClick={()=> cleanSearch()}><img src={brandLogo}  style={{width:150+'px'}}/></NavLink>
+    <header className=" d-flex justify-content-around gap-5 align-items-center position-sticky  top-0  shadow" >
+      <NavLink to={'/'} onClick={()=> cleanSearch()}><img src={brandLogo}  style={{width:150+'px'}} alt='brandLogo'/></NavLink>
       <CatalogProducts/>
-      
       <SearchInput/>
-      
-      <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}}/></NavLink>
-      <NavLink to={"/authorithation"}><img src={personLogo} style={{width: 100 + "px"}}/></NavLink>
-      <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}}/></NavLink>
+      <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}} alt='favoriteLogo'/></NavLink>
+      <NavLink to={"/authorithation"}><img src={personLogo} style={{width: 100 + "px"}} alt='authLogo'/></NavLink>
+      <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/></NavLink>
     </header>
   )
 }

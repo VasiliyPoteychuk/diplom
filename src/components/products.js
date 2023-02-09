@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts, productsSelect, statusSelect } from "../store/productsSlice"
 import Card from "./card"
@@ -19,7 +19,6 @@ export default function Products(){
     products.filter(el => {
       const elem = Object.values(el).toString().toLowerCase()
       if(elem.includes(searchData.toLowerCase())){
-        console.log(el)
         elements.push(el)
       }
     })
@@ -35,15 +34,15 @@ export default function Products(){
   
 
   return(
-    <div className="root position-relative">
+    <div className="root position-relative " >
       {status === 'loading' && <h1 className="  auth-form" role='alert'>Загрузка</h1>}
       <Header/>
       {foundedProducts.length>0 ? 
-        <div className="w-75  m-auto  d-flex flex-wrap gap-5">
+        <div className="w-75  m-auto  d-flex flex-wrap gap-5 ">
           {foundedProducts.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
         :
-         <div className="w-75  m-auto  d-flex flex-wrap gap-5">
+         <div className="w-75  m-auto  d-flex flex-wrap gap-5 ">
           {products.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
       }
