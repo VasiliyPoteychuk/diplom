@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import productApi from '../api/productsAPI';
 import AddToCart from "./addToCard";
 import Header from "../header/header";
@@ -29,16 +29,15 @@ export default function Product(){
       <Header/>
       <div className="d-flex border">
         <div>
-          <img src={pic}/>
+          <img src={pic} alt='pictures'/>
           <div>
             {picture.map(im=> 
-                <img key={im.id} src={im}  style={{width:100 + "px"}} onClick={()=>setPic(im)}/>
+                <img key={im.id} src={im}  style={{width:100 + "px"}} onClick={()=>setPic(im)} alt='productImg'/>
             )}
           </div>
         </div>
         <div>
           <h1>{product.brand} {product.title}</h1>
-          <h4></h4>
           <p>{product.description}</p>
           <p>Старая цена: {Math.round(product.price/(100-product.discountPercentage)*100)}$</p>
           <p>Скидка: {product.discountPercentage}%</p>

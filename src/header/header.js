@@ -33,10 +33,10 @@ export default function Header(){
       <SearchInput/>
       <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}} alt='favoriteLogo'/></NavLink>
       {user.firstName? 
-        <div>
-          <img src={userLogo} style={{width: 100 + "px", height: 70 +'px'}} alt='authLogo' onClick={()=> setUserOut(true)}/>
+        <div className="position-relative">
+          <img src={userLogo} style={{width: 100 + "px", height: 70 +'px'}} alt='authLogo' onClick={()=> setUserOut(!userOut)}/>
           <h4 className="text-center m-0">{user.firstName}</h4>
-          {userOut && <img src={logOutlogo} onClick={()=> cleanUser()}/>}
+          {userOut && <img src={logOutlogo} onClick={()=> cleanUser()} className='position-absolute start-50' style={{width: 50 + 'px'}} alt='outLogo'/>}
         </div>
         :
         <NavLink to={"/authorithation"}><img src={logInlogo} style={{width: 100 + "px"}} alt='authLogo'/></NavLink>

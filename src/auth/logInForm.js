@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useDispatch} from "react-redux";
 import { enterUser } from "../store/usersSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function LogInForm(){
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function logSubmit(e) {
     e.preventDefault();
-    dispatch(enterUser({email, password}))
+    dispatch(enterUser({email, password}));
+    navigate('/');
   }
 
   return(

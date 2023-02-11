@@ -2,18 +2,21 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import productsAPI from "../api/productsAPI";
 import { addUser } from "../store/usersSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function SingUpForm(){
   const [firstName, setFirstName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function registerSubmit(e) {
     e.preventDefault();
     productsAPI.register({firstName, email, password})
         .then(res => {
-          dispatch(addUser(res.data))
+          dispatch(addUser(res.data));
+          navigate('/');
         })
 }
 

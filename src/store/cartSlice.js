@@ -22,14 +22,14 @@ export const cartSlice = createSlice({
       }
     },
     incrementCount: (state,action) => {
-      state.cartItems.map(item => {
+      state.cartItems.filter(item => {
         if(item.id===action.payload.id){
           item.count++
         }
       })  
     },
     decrementCount: (state, action) => {
-      state.cartItems.map(item => {
+      state.cartItems.filter(item => {
         if(item.id===action.payload.id && item.count !==0){
           item.count--
         }
@@ -39,7 +39,7 @@ export const cartSlice = createSlice({
       
     },
     deleteProduct: (state, action) => {
-      state.cartItems.map(item => {
+      state.cartItems.filter(item => {
         if(item.id===action.payload.id && item.count !==0){
           item.count=0
         }

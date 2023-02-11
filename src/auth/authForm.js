@@ -9,6 +9,7 @@ import { useSelector} from 'react-redux';
 export default function Authorization(){
   const [active, setActive]=useState(false);
   const user = useSelector(userSelect);
+  
   return(
     <div className="auth-form">
       <div className="d-flex justify-content-between align-items-center">
