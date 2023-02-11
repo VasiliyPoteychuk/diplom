@@ -6,8 +6,7 @@ import Product from "./components/product";
 import Cart from "./header/cart"
 import ProductsInCategory from "./header/productsInCategory";
 import Favorite from "./components/favourite";
-import AuthForm from "./auth/authForm";
-import Search from "./header/search";
+import Authorization from "./auth/authForm";
 
 export default createBrowserRouter([
   {
@@ -32,7 +31,7 @@ export default createBrowserRouter([
   },
   {
     path: "/authorithation",
-    element:<AuthForm/>
+    element:<Authorization/>
   },
   {
     path: "/products/category/:cat",

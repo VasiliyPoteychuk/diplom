@@ -4,12 +4,10 @@ import { deleteFavorite, favoriteSelect } from "../store/favoriteSlice";
 import Rating from "./rating";
 import AddToCart from "./addToCard";
 import Header from "../header/header";
-import { useState } from "react";
 
 export default function Favorite(){
-  const favoriteList = useSelector(favoriteSelect)
-  const dispatch = useDispatch()
-  const [image, setImage] = useState('')
+  const favoriteList = useSelector(favoriteSelect);
+  const dispatch = useDispatch();
 
   return(
     <div>
@@ -40,4 +38,4 @@ export default function Favorite(){
       </div>
     </div>
   )
-}
+};

@@ -1,28 +1,20 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-//import api from '../../api/products'
-//import { saveToken } from '../../store/usersSlice';
+import productsAPI from "../api/productsAPI";
+import { addUser } from "../store/usersSlice";
 
 export default function SingUpForm(){
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
- 
 
   function registerSubmit(e) {
     e.preventDefault();
-    // api.register({name, email, password})
-    //     .then(res => {
-    //         localStorage.clear();
-    //         localStorage.setItem('token', res.data.access_token);
-    //         dispatch(saveToken(res.data.user));
-    //         setErrors([])
-    //     })
-    //     .catch(res => {
-    //         setErrors(...Object.values(res.response.data.errors))
-    //     })
+    productsAPI.register({firstName, email, password})
+        .then(res => {
+          dispatch(addUser(res.data))
+        })
 }
 
   return(
@@ -31,8 +23,8 @@ export default function SingUpForm(){
       <div className="mb-3">
         <label htmlFor="name" className="form-label">Имя</label>
         <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           type="text"
           className="form-control"
           id="name"
@@ -68,4 +60,4 @@ export default function SingUpForm(){
     </form>
   </div>
   )
-}
+};

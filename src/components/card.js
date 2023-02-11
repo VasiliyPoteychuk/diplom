@@ -1,4 +1,3 @@
-import Rating from "./rating";
 import '../styles/rating.css';
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,8 +5,7 @@ import { addFavorite } from "../store/favoriteSlice";
 import AddToCart from "./addToCard";
 
 export default function Card({product}){
-  const dispatch =useDispatch()
-
+  const dispatch =useDispatch();
 
   return(
     <div className="card  shadow mt-5">
@@ -22,15 +20,11 @@ export default function Card({product}){
         </div>
         
         <h4 className="card-text text-center">{product.title}</h4>
-        {/* <Rating value={product.rating}/> */}
         <div className="btn-group">
           <AddToCart product={product}/>
           <button className="btn btn-warning" onClick={()=> dispatch(addFavorite(product))}>добавить в избраное</button>
         </div>
-      </div>
-      
-        
+      </div> 
     </div>
-    
   )
-}
+};

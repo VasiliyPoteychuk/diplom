@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { NavLink, useParams} from "react-router-dom";
 import productApi from '../api/productsAPI';
 import AddToCart from "./addToCard";
-import Header from "../header/header"
-import AddToFavorite from "./addToFavorite";
+import Header from "../header/header";
 import Rating from "./rating";
 import { useDispatch } from "react-redux";
 import { addFavorite } from "../store/favoriteSlice";
 
 export default function Product(){
-  const [product, setProduct] = useState({})
-  const [picture, setPicture] = useState([])
-  const [pic, setPic] = useState('')
-  const {id} = useParams()
-  const dispatch = useDispatch()
+  const [product, setProduct] = useState({});
+  const [picture, setPicture] = useState([]);
+  const [pic, setPic] = useState('');
+  const {id} = useParams();
+  const dispatch = useDispatch();
 
   useEffect(()=> {
     productApi.getProduct(id)
@@ -23,7 +22,7 @@ export default function Product(){
       setPic(resp.data.thumbnail)
     })
     
-  },[id])
+  },[id]);
 
   return(
     <div>
@@ -55,4 +54,4 @@ export default function Product(){
       </div> 
     </div>
   )
-}
+};

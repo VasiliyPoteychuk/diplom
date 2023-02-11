@@ -1,17 +1,16 @@
-import { useDispatch, useSelector } from "react-redux"
-import { cartSelect } from "../store/cartSlice"
-import Card from "../components/card"
-import {NavLink} from "react-router-dom"
-import brandLogo from "../icons/mobileLogo.jpg"
-import { incrementCount, decrementCount, deleteProduct} from "../store/cartSlice"
-import Header from "./header"
+import { useDispatch, useSelector } from "react-redux";
+import { cartSelect } from "../store/cartSlice";
+import {NavLink} from "react-router-dom";
+import { incrementCount, decrementCount, deleteProduct} from "../store/cartSlice";
+import Header from "./header";
+import { addFavorite } from "../store/favoriteSlice";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);
   const dispatch = useDispatch();
-  const i =0
-  const summShoping = cartList.reduce((acc, el)=> acc + (el.price*el.count), i)
-  const countShoping = cartList.reduce((acc, el)=> acc + el.count, i)
+  const i = 0;
+  const summShoping = cartList.reduce((acc, el)=> acc + (el.price*el.count), i);
+  const countShoping = cartList.reduce((acc, el)=> acc + el.count, i);
 
   return(
     <div>
@@ -23,26 +22,36 @@ export default function Cart(){
       <div className="d-flex gap-5 flex-wrap">
         {cartList.length >0 ?     
           cartList.map(el => 
-            <div key={el.id} className="card">
-              <Card product={el}/>
-              <div className="d-flex justify-content-center gap-2">
-                <button onClick={()=> dispatch(decrementCount(el))}>-</button>
-                <span>{el.count}</span>
-                <button onClick={()=> dispatch(incrementCount(el))}>+</button>
+            <div key={el.id} className="d-flex flex-column justify-content-between align-items-center border p-2" style={{width: 300 + 'px', height: 500 + 'px'} }>
+              <img src={el.thumbnail} className='card-img-top  my-1' style={{height:200+'px', width:280 +'px'}} alt='картинка'/>
+              <div className=""> 
+                <div className=" d-flex gap-3">
+                  <h2 className="card-text">{el.price}$</h2>
+                  <h6 className="card-text text-danger bg-warning rounded-circle text-center d-flex align-items-center p-2">-{el.discountPercentage}%</h6>
+                  <h6 className="card-text text-decoration-line-through text-dark">{Math.round(el.price/(100-el.discountPercentage)*100)}$</h6> 
+                </div>
+                <h4 className="card-text text-center">{el.title}</h4>
+                <p>{el.description}</p>
+                <div className="d-flex justify-content-center gap-2 m-2">
+                  <button onClick={()=> dispatch(decrementCount(el))}>-</button>
+                  <span>{el.count}</span>
+                  <button onClick={()=> dispatch(incrementCount(el))}>+</button>
+                </div>
+                <div className="btn-group d-flex flex-column">
+                   <button className="btn btn-warning" onClick={()=> dispatch(addFavorite(el))}>добавить в избраное</button>
+                  <button className="btn btn-success" onClick={()=> dispatch(deleteProduct(el))}>удалить</button>
+                </div>
+               
               </div>
-              <button className="btn btn-success" onClick={()=> dispatch(deleteProduct(el))}>удалить</button>
-            </div>  
-          )
-          :
-          <div  className="auth-form d-flex flex-column  gap-3 ">
-            <h1>Корзина пуста</h1>
-            <h4>Чтобы найти необходимые товары, воспользуйтесь поиском или каталогом.</h4>
-            <NavLink to={'/'} ><button className='btn btn-dark'>Перейти на главную</button></NavLink>
-          </div>
-          
+            </div>
+            ):
+            <div  className="auth-form d-flex flex-column  gap-3 ">
+              <h1>Корзина пуста</h1>
+              <h4>Чтобы найти необходимые товары, воспользуйтесь поиском или каталогом.</h4>
+              <NavLink to={'/'} ><button className='btn btn-dark'>Перейти на главную</button></NavLink>
+            </div> 
         }
-      </div>
-      
+      </div> 
     </div>
   )
-}
+};

@@ -15,7 +15,7 @@ export default function CatalogProducts(){
   
   return(
     <div className="dropdown">
-      <img src={categoryLogo} onClick={()=> setActive(!active)} style={{width:100+'px'}}/>
+      <img src={categoryLogo} onClick={()=> setActive(!active)} style={{width:100+'px'}} alt='categoryLogo'/>
       {active && <ul className="catalogList bg-dark rounded p-3">
         {categories.map(el=>
           <li key={el.id} onClick={()=>setActive(!active)} className=" "> <NavLink to={`/products/category/${el}`} key={el.id} cat={el} className="fs-3 text-light">{el}</NavLink></li>  

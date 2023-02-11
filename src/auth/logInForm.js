@@ -1,27 +1,15 @@
 import { useState } from "react";
 import { useDispatch} from "react-redux";
-
-//import api from '../../api/products'
-//import { saveToken } from '../../store/usersSlice';
+import { enterUser } from "../store/usersSlice";
 
 export default function LogInForm(){
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
   function logSubmit(e) {
     e.preventDefault();
-    // api.login({email, password})
-    //   .then(res => {
-    //     localStorage.clear();
-    //     localStorage.setItem('token', res.data.access_token);
-    //     dispatch(saveToken(res.data));
-    //     setErrors([])
-    //   })
-    //   .catch(res => {
-    //     setErrors(...Object.values(res.response.data.errors))
-    // })
+    dispatch(enterUser({email, password}))
   }
 
   return(
@@ -38,7 +26,6 @@ export default function LogInForm(){
               name='email'
               placeholder="Email"/>
         </div>
-          
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Пароль</label>
           <input
@@ -53,9 +40,7 @@ export default function LogInForm(){
         <div className="mb-3">
           <input type="submit" className="btn btn-success" value='Авторизироваться'/>
         </div>
-        
       </form>
     </div>
   )
-
-}
+};

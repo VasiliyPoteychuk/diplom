@@ -1,12 +1,14 @@
-import { useState } from "react"
-import LogInForm from "./logInForm"
-import SingUpForm from "./signUpForm"
-import "../styles/auth.css"
-import { NavLink } from "react-router-dom"
+import { useState } from "react";
+import LogInForm from "./logInForm";
+import SingUpForm from "./signUpForm";
+import "../styles/auth.css";
+import { NavLink } from "react-router-dom";
+import { userSelect } from "../store/usersSlice";
+import { useSelector} from 'react-redux';
 
-export default function AuthForm(){
-  const [active, setActive]=useState(false)
-
+export default function Authorization(){
+  const [active, setActive]=useState(false);
+  const user = useSelector(userSelect);
   return(
     <div className="auth-form">
       <div className="d-flex justify-content-between align-items-center">
@@ -14,9 +16,9 @@ export default function AuthForm(){
         <NavLink to={"/"}><button type="button" className="btn-close" /></NavLink>
       </div>
       
-      {active ? <LogInForm/>: <SingUpForm/>}
+      {active && user? <LogInForm />: <SingUpForm />}
       
     </div>
     
   )
-}
+};
