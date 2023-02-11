@@ -8,7 +8,7 @@ export default function AddToFavorite({product}){
 
   return(
     <div>
-      <button type="button" className="btn btn-warning" onClick={()=> dispatch(addFavorite(product))}>добавить в избраное</button>
+      <button type="button" className="btn btn-outline-warning" onClick={()=> dispatch(addFavorite(product))}>добавить в избраное</button>
     </div>
   )
 }

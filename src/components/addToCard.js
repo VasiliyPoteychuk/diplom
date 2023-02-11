@@ -11,7 +11,7 @@ export default function AddToCart({product}) {
 
   return(
     <div>
-      <button type="button" className="btn btn-success" onClick={()=> choose(product)}>добавить в корзину</button>
+      <button type="button" className="btn btn-outline-success" onClick={()=> choose(product)}>добавить в корзину</button>
     </div>
   )
 }

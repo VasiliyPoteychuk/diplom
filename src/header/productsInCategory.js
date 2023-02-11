@@ -18,7 +18,7 @@ export default function ProductsInCategory(){
     <div>
       <Header/>
       <div className="d-flex gap-5  flex-wrap">
-        {products.map(el=><Card key={el.id} product={el}/>
+        {products.map(el=><Card key={el.id} product={el}/> 
         )}
       </div>
     </div>

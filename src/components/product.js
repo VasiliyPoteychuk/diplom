@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams, NavLink} from "react-router-dom";
 import productApi from '../api/productsAPI';
 import AddToCart from "./addToCard";
 import Header from "../header/header";
@@ -27,9 +27,9 @@ export default function Product(){
   return(
     <div>
       <Header/>
-      <div className="d-flex border">
+      <div className="d-flex flex-column align-items-center  m-5">
         <div>
-          <img src={pic} alt='pictures'/>
+          <img src={pic} alt='pictures' style={{width: 500 + 'px', height: 500 + 'px'}}/>
           <div>
             {picture.map(im=> 
                 <img key={im.id} src={im}  style={{width:100 + "px"}} onClick={()=>setPic(im)} alt='productImg'/>
@@ -43,10 +43,12 @@ export default function Product(){
           <p>Скидка: {product.discountPercentage}%</p>
           <p>Цена: {product.price}$</p>
           <p>В наличии: {product.stock}</p>
-          <Rating value={product.rating}/>
-          <div className="btn-group">
+          <p>Рейтинг: <Rating value={product.rating}/></p>
+          
+          <div className="btn-group gap-1">
             <AddToCart product={product}/>
-            <button className="btn btn-warning" onClick={()=> dispatch(addFavorite(product))}>добавить в избраное</button>
+            <button className="btn btn-outline-warning rounded" onClick={()=> dispatch(addFavorite(product))}>добавить в избраное</button>
+            <NavLink to={'/'}><button className='btn btn-outline-secondary'>на главную</button></NavLink>
           </div>
           
         </div> 

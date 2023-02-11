@@ -13,16 +13,16 @@ export default function Cart(){
   const countShoping = cartList.reduce((acc, el)=> acc + el.count, i);
 
   return(
-    <div>
+    <div className="d-flex flex-column gap-4">
       <Header/>
-      <div className="d-flex justify-content-evenly">
+      <div className="d-flex justify-content-evenly shadow bg-light">
         <h2>количество покупок: {countShoping}</h2>
         <h2>общая стоимость: {summShoping}$</h2>
       </div>
       <div className="d-flex gap-5 flex-wrap">
         {cartList.length >0 ?     
           cartList.map(el => 
-            <div key={el.id} className="d-flex flex-column justify-content-between align-items-center border p-2" style={{width: 300 + 'px', height: 500 + 'px'} }>
+            <div key={el.id} className="cartList"  >
               <img src={el.thumbnail} className='card-img-top  my-1' style={{height:200+'px', width:280 +'px'}} alt='картинка'/>
               <div className=""> 
                 <div className=" d-flex gap-3">
@@ -33,13 +33,13 @@ export default function Cart(){
                 <h4 className="card-text text-center">{el.title}</h4>
                 <p>{el.description}</p>
                 <div className="d-flex justify-content-center gap-2 m-2">
-                  <button onClick={()=> dispatch(decrementCount(el))}>-</button>
-                  <span>{el.count}</span>
-                  <button onClick={()=> dispatch(incrementCount(el))}>+</button>
+                  <button onClick={()=> dispatch(decrementCount(el))} className="btn btn-outline-dark rounded-circle" >-</button>
+                  <h3>{el.count}</h3>
+                  <button onClick={()=> dispatch(incrementCount(el))} className="btn btn-outline-dark rounded-circle">+</button>
                 </div>
-                <div className="btn-group d-flex flex-column">
-                   <button className="btn btn-warning" onClick={()=> dispatch(addFavorite(el))}>добавить в избраное</button>
-                  <button className="btn btn-success" onClick={()=> dispatch(deleteProduct(el))}>удалить</button>
+                <div className="btn-group d-flex flex-column gap-1">
+                   <button className="btn btn-outline-warning rounded" onClick={()=> dispatch(addFavorite(el))}>добавить в избраное</button>
+                  <button className="btn btn-outline-success rounded" onClick={()=> dispatch(deleteProduct(el))}>удалить</button>
                 </div>
                
               </div>

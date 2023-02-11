@@ -15,16 +15,16 @@ export default function Favorite(){
       <div className="d-flex flex-wrap">
         {favoriteList.length>0 ?
           favoriteList.map(el => 
-            <div key={el.id} className=" d-flex m-5 gap-3 border rounded shadow p-2 w-25">
-              <img src={el.thumbnail} className='card-img-top w-50  my-1' style={{height:250+'px',}} alt='картинка'/>
-              <div className="d-flex flex-column gap-2">
+            <div key={el.id} className=" d-flex align-items-center m-5 gap-3 border rounded shadow p-2 favorite" >
+              <img src={el.thumbnail} className='card-img-top w-50  ' style={{height:250+'px',}} alt='картинка'/>
+              <div className="d-flex flex-column justify-content-between gap-2">
                 <h1>{el.title}</h1>
                 <p>{el.description}</p>
                 <h2>{el.price}$</h2>
                 <Rating value={el.rating}/>
-                <div className="btn-group">
+                <div className="btn-group gap-1">
                   <AddToCart product={el}/>
-                  <button className="btn btn-danger" onClick={()=> dispatch(deleteFavorite(el.id))}>удалить</button>
+                  <button className="btn btn-outline-danger rounded" onClick={()=> dispatch(deleteFavorite(el.id))}>удалить</button>
                 </div>
               </div>
             </div>  
