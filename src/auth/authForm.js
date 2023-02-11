@@ -7,9 +7,9 @@ import { userSelect } from "../store/usersSlice";
 import { useSelector} from 'react-redux';
 
 export default function Authorization(){
-  const [active, setActive]=useState(false);
+  const [active, setActive]=useState(true);
   const user = useSelector(userSelect);
-  
+
   return(
     <div className="auth-form">
       <div className="d-flex justify-content-between align-items-center">

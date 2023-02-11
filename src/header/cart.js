@@ -4,9 +4,11 @@ import {NavLink} from "react-router-dom";
 import { incrementCount, decrementCount, deleteProduct} from "../store/cartSlice";
 import Header from "./header";
 import { addFavorite } from "../store/favoriteSlice";
+import { userSelect } from "../store/usersSlice";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);
+  const userAuth = useSelector(userSelect)
   const dispatch = useDispatch();
   const i = 0;
   const summShoping = cartList.reduce((acc, el)=> acc + (el.price*el.count), i);
@@ -18,6 +20,11 @@ export default function Cart(){
       <div className="d-flex justify-content-evenly shadow bg-light">
         <h2>количество покупок: {countShoping}</h2>
         <h2>общая стоимость: {summShoping}$</h2>
+        {userAuth.firstName ?
+        <button  className="btn btn-outline-success rounded">Оформить заказ</button>:
+        <NavLink to={'/authorithation'}><button  className="btn btn-outline-success rounded">Авторизируйтесь</button> </NavLink>
+        }
+        
       </div>
       <div className="d-flex gap-5 flex-wrap">
         {cartList.length >0 ?     
