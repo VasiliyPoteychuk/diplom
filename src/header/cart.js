@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cartSelect } from "../store/cartSlice";
-import {NavLink} from "react-router-dom";
-import { incrementCount, decrementCount, deleteProduct} from "../store/cartSlice";
+import {Navigate, NavLink} from "react-router-dom";
+import { incrementCount, decrementCount, deleteProduct, deleteAllProduct} from "../store/cartSlice";
 import Header from "./header";
 import { addFavorite } from "../store/favoriteSlice";
 import { userSelect } from "../store/usersSlice";
+import { useState } from "react";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);
@@ -13,6 +14,12 @@ export default function Cart(){
   const i = 0;
   const summShoping = cartList.reduce((acc, el)=> acc + (el.price*el.count), i);
   const countShoping = cartList.reduce((acc, el)=> acc + el.count, i);
+  const [order, setOrder] = useState(false)
+
+  function checkOut(){
+    dispatch(deleteAllProduct())
+    Navigate('/')
+  }
 
   return(
     <div className="d-flex flex-column gap-4">
@@ -21,11 +28,16 @@ export default function Cart(){
         <h2>количество покупок: {countShoping}</h2>
         <h2>общая стоимость: {summShoping}$</h2>
         {userAuth.firstName ?
-        <button  className="btn btn-outline-success rounded">Оформить заказ</button>:
+        <button  className="btn btn-outline-success rounded" onClick={()=>setOrder(!order)}>Оформить заказ</button>:
         <NavLink to={'/authorithation'}><button  className="btn btn-outline-success rounded">Авторизируйтесь</button> </NavLink>
         }
-        
       </div>
+      {order? 
+        <div className="auth-form">
+          <h1>Ваш заказ оформлен</h1>
+          <NavLink to={'/'}><button className="btn btn-outline-secondary" onClick={()=> checkOut()}>вернуться на главную</button></NavLink>
+        </div>
+      :
       <div className="d-flex gap-5 flex-wrap">
         {cartList.length >0 ?     
           cartList.map(el => 
@@ -58,7 +70,9 @@ export default function Cart(){
               <NavLink to={'/'} ><button className='btn btn-dark'>Перейти на главную</button></NavLink>
             </div> 
         }
-      </div> 
+      </div>
+      }
+       
     </div>
   )
 };

@@ -11,8 +11,14 @@ export default function LogInForm(){
 
   function logSubmit(e) {
     e.preventDefault();
-    dispatch(enterUser({email, password}));
-    navigate('/');
+    
+    if(!password || !email){
+      alert('нужно заполнить все поля')
+    }else{
+      dispatch(enterUser({email, password}));
+      navigate('/');
+    }
+    
   }
 
   return(

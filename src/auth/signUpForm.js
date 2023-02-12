@@ -15,8 +15,12 @@ export default function SingUpForm(){
     e.preventDefault();
     productsAPI.register({firstName, email, password})
         .then(res => {
-          dispatch(addUser(res.data));
-          navigate('/');
+          if(!password || !email || !firstName){
+            alert('нужно заполнить все поля')
+          }else{
+            dispatch(addUser(res.data));
+            navigate('/');
+          }
         })
 }
 

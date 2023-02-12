@@ -16,8 +16,10 @@ export default function SearchInput(){
     <form onSubmit={(e)=> addSearch(e)}>
       <input 
         type='search'
+        aria-label="Search"
         placeholder="search..."
         onChange={(e) => setSearchData(e.target.value)}
+        onClick={(e)=> console.log(e)}
       />
       <input type='submit' value='поиск'/>
     </form>
