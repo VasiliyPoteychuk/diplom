@@ -45,7 +45,7 @@ export default function Header(){
       
       <div className="position-relative">
         <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/></NavLink>
-        <span className="fs-3 p-2  position-absolute top-50 start-100">{cartCount}</span>
+        <span className="fs-3 p-2  position-absolute top-0 start-100">{cartCount}hi</span>
       </div>
       
     </header>
