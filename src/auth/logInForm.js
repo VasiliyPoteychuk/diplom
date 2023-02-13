@@ -32,6 +32,7 @@ export default function LogInForm(){
               type="email"
               className="form-control"
               id="email"
+              required
               name='email'
               placeholder="Email"/>
         </div>
@@ -43,6 +44,7 @@ export default function LogInForm(){
             type="text"
             className="form-control"
             id="password"
+            required
             name='password'
             placeholder="Пароль"/>
         </div>

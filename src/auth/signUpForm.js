@@ -36,7 +36,9 @@ export default function SingUpForm(){
           className="form-control"
           id="name"
           name='name'
+          required
           placeholder="Имя"/>
+          
       </div>
       <div className="mb-3">
         <label htmlFor="email" className="form-label">Email</label>
@@ -47,6 +49,7 @@ export default function SingUpForm(){
           className="form-control"
           id="email"
           name='email'
+          required
           placeholder="Email"/>
       </div>
       <div className="mb-3">
@@ -57,6 +60,7 @@ export default function SingUpForm(){
           type="text"
           className="form-control"
           id="password"
+          required
           name='password'
           placeholder="Пароль"/>
       </div>
