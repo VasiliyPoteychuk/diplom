@@ -10,13 +10,14 @@ import favoriteLogo from '../icons/favorite1.png';
 import { useDispatch, useSelector } from "react-redux";
 import { search, searchProduct } from "../store/searchSlice";
 import { logOutUser, userSelect } from "../store/usersSlice";
+import { cartSelect } from "../store/cartSlice"; 
 import {useState} from 'react';
 
 export default function Header(){
   const dispatch = useDispatch();
   const user = useSelector(userSelect) ;
   const [userOut, setUserOut] = useState(false);
-
+  const cartCount = useSelector(cartSelect).length
   function cleanSearch(){
     dispatch(searchProduct([]));
     dispatch(search(''));
@@ -42,8 +43,11 @@ export default function Header(){
         <NavLink to={"/authorithation"}><img src={logInlogo} style={{width: 100 + "px"}} alt='authLogo'/></NavLink>
       }
       
+      <div className="position-relative">
+        <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/></NavLink>
+        <span className="fs-3 p-2  position-absolute top-50 start-100">{cartCount}</span>
+      </div>
       
-      <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/></NavLink>
     </header>
   )
 };
