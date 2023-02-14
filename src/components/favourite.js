@@ -13,7 +13,7 @@ export default function Favorite(){
   return(
     <div>
       <Header/>
-      <BackButton/>
+      {favoriteList.length>0 && <BackButton/>}
       <div className="d-flex flex-wrap " style={{marginLeft:150+'px'}}>
         {favoriteList.length>0 ?
           favoriteList.map(el => 

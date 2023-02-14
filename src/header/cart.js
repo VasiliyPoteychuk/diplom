@@ -6,6 +6,7 @@ import Header from "./header";
 import { addFavorite } from "../store/favoriteSlice";
 import { userSelect } from "../store/usersSlice";
 import { useState } from "react";
+import BackButton from "../components/backButton";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);
@@ -32,6 +33,7 @@ export default function Cart(){
         <NavLink to={'/authorithation'}><button  className="btn btn-outline-success rounded">Авторизируйтесь</button> </NavLink>
         }
       </div>
+      {cartList.length >0 && <BackButton/>}
       {order? 
         <div className="auth-form">
           <h1>Ваш заказ оформлен</h1>
