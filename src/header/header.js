@@ -12,12 +12,14 @@ import { search, searchProduct } from "../store/searchSlice";
 import { logOutUser, userSelect } from "../store/usersSlice";
 import { cartSelect } from "../store/cartSlice"; 
 import {useState} from 'react';
+import { favoriteSelect } from "../store/favoriteSlice";
 
 export default function Header(){
   const dispatch = useDispatch();
   const user = useSelector(userSelect) ;
   const [userOut, setUserOut] = useState(false);
   const cartCount = useSelector(cartSelect).length
+  const favCount = useSelector(favoriteSelect).length
   function cleanSearch(){
     dispatch(searchProduct([]));
     dispatch(search(''));
@@ -32,7 +34,10 @@ export default function Header(){
       <NavLink to={'/'} onClick={()=> cleanSearch()}><img src={brandLogo}  style={{width:150+'px'}} alt='brandLogo'/></NavLink>
       <CatalogProducts/>
       <SearchInput/>
-      <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}} alt='favoriteLogo'/></NavLink>
+      <div className="position-relative">
+         <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}} alt='favoriteLogo'/></NavLink>
+        {favCount!=0 && <span className=" p-2  position-absolute top-0 start-100 bg-secondary rounded-circle ">{favCount}</span>}
+      </div>
       {user.firstName? 
         <div className="position-relative">
           <img src={userLogo} style={{width: 100 + "px", height: 70 +'px'}} alt='authLogo' onClick={()=> setUserOut(!userOut)}/>
@@ -45,7 +50,7 @@ export default function Header(){
       
       <div className="position-relative">
         <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/> </NavLink>
-        <span className=" p-2  position-absolute top-0 start-100 bg-secondary rounded-circle ">{cartCount}</span>
+        {cartCount!=0 && <span className=" p-2  position-absolute top-0 start-100 bg-secondary rounded-circle ">{cartCount}</span>}
       </div>
       
     </header>
