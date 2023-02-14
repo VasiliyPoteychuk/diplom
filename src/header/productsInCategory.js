@@ -3,6 +3,7 @@ import Header from "./header";
 import productApi from '../api/productsAPI';
 import { useParams } from "react-router-dom";
 import Card from "../components/card";
+import BackButton from "../components/backButton";
 
 export default function ProductsInCategory(){
   const {cat} = useParams();
@@ -15,9 +16,11 @@ export default function ProductsInCategory(){
   },[cat]);
 
   return(
-    <div>
+    <div className="position relative">
       <Header/>
-      <div className="d-flex gap-5  flex-wrap">
+      <BackButton/>
+      <div className="d-flex gap-5  flex-wrap container m-auto">
+
         {products.map(el=><Card key={el.id} product={el}/> 
         )}
       </div>

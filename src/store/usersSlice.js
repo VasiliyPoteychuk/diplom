@@ -24,7 +24,6 @@ export const usersSlice = createSlice({
     enterUser: (state,action) => {
       if(state.usersList.some(user => user.email === action.payload.email && user.password === action.payload.password)){
         const item =  state.usersList.filter( user => user.email === action.payload.email && user.password === action.payload.password);
-        console.log(item)
         state.user= item[0]
       }else{
         alert('Такой пользователь не зарегистрирован')

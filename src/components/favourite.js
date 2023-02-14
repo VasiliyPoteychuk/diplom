@@ -4,6 +4,7 @@ import { deleteFavorite, favoriteSelect } from "../store/favoriteSlice";
 import Rating from "./rating";
 import AddToCart from "./addToCard";
 import Header from "../header/header";
+import BackButton from "./backButton";
 
 export default function Favorite(){
   const favoriteList = useSelector(favoriteSelect);
@@ -12,7 +13,8 @@ export default function Favorite(){
   return(
     <div>
       <Header/>
-      <div className="d-flex flex-wrap">
+      <BackButton/>
+      <div className="d-flex flex-wrap " style={{marginLeft:150+'px'}}>
         {favoriteList.length>0 ?
           favoriteList.map(el => 
             <div key={el.id} className=" d-flex align-items-center m-5 gap-3 border rounded shadow p-2 favorite" >

@@ -22,9 +22,9 @@ export default function Cart(){
   }
 
   return(
-    <div className="d-flex flex-column gap-4">
+    <div className="d-flex flex-column gap-4 ">
       <Header/>
-      <div className="d-flex justify-content-evenly shadow bg-light">
+      <div className="d-flex justify-content-evenly shadow bg-light ">
         <h2>количество покупок: {countShoping}</h2>
         <h2>общая стоимость: {summShoping}$</h2>
         {userAuth.firstName ?
@@ -38,7 +38,7 @@ export default function Cart(){
           <NavLink to={'/'}><button className="btn btn-outline-secondary" onClick={()=> checkOut()}>вернуться на главную</button></NavLink>
         </div>
       :
-      <div className="d-flex gap-5 flex-wrap">
+      <div className="d-flex gap-5 flex-wrap p-5 m-auto">
         {cartList.length >0 ?     
           cartList.map(el => 
             <div key={el.id} className="cartList"  >
