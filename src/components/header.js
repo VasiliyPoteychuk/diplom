@@ -18,8 +18,9 @@ export default function Header(){
   const dispatch = useDispatch();
   const user = useSelector(userSelect) ;
   const [userOut, setUserOut] = useState(false);
-  const cartCount = useSelector(cartSelect).length
-  const favCount = useSelector(favoriteSelect).length
+  const cartCount = useSelector(cartSelect).length;
+  const favCount = useSelector(favoriteSelect).length;
+  
   function cleanSearch(){
     dispatch(searchProduct([]));
     dispatch(search(''));
