@@ -26,8 +26,7 @@ header{
 }
 .card-img-top:hover{
   position: relative;
-  width: 300px;
-  height: 280px;
+  width: 290px;
 }
 .favorite{
   width: 700px;
@@ -43,13 +42,7 @@ header{
   border-radius: 10px;
   padding: 5px;
 }
-.rounded-circle{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-}
+
 .searchButton{
   top: 3px;
   right: 3px;

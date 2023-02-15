@@ -25,7 +25,6 @@ export default function LogInForm(){
     <div className=''>
       <form className='' onSubmit={logSubmit}>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
           <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -37,7 +36,6 @@ export default function LogInForm(){
               placeholder="Email"/>
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">Пароль</label>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}

@@ -9,16 +9,17 @@ export default function Card({product}){
 
   return(
     <div className="card  shadow mt-5">
-      <div className="card-body d-flex flex-column aline-items-center" >
+      <div className="card-body d-flex flex-column justify-content-around aline-items-center" >
         <NavLink to={`/products/${product.id}`} className='d-flex justify-content-center'>
            <img src={product.thumbnail} className='card-img-top  '  alt='картинка'/>
         </NavLink>
-        <div className="card-body d-flex gap-3">
-          <h2 className="card-text">{product.price}$</h2>
-          <h6 className="card-text text-danger bg-warning rounded-circle text-center d-flex align-items-center p-2">-{product.discountPercentage}%</h6>
-          <h6 className="card-text text-decoration-line-through text-dark">{Math.round(product.price/(100-product.discountPercentage)*100)}$</h6>
+        <div className=" d-flex justify-content-evenly gap-3">
+          <h2 className="card-text d-flex align-items-end">{product.price}$</h2>
+          <p className="card-text text-danger bg-warning rounded-circle  d-flex justify-content-center align-items-center p-2">-{product.discountPercentage}%</p>
+          <p className="card-text text-decoration-line-through text-dark">{Math.round(product.price/(100-product.discountPercentage)*100)}$</p>
+          <span>&#x2605; {product.rating}</span>
         </div>
-        
+       
         <h4 className="card-text text-center">{product.title}</h4>
         <div className="btn-group gap-1">
           <AddToCart product={product}/>

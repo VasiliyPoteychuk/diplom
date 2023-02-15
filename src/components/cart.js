@@ -6,7 +6,7 @@ import Header from "./header";
 import { addFavorite } from "../store/favoriteSlice";
 import { userSelect } from "../store/usersSlice";
 import { useState } from "react";
-import BackButton from "../components/backButton";
+import BackButton from "../helpers/backButton";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);

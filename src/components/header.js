@@ -1,5 +1,5 @@
-import CatalogProducts from "./catalog";
-import SearchInput from "./search";
+import CatalogProducts from "../helpers/catalog";
+import SearchInput from "../helpers/search";
 import { NavLink } from "react-router-dom";
 import brandLogo from "../icons/mobileLogo.jpg";
 import userLogo from '../icons/user.png';
@@ -34,9 +34,9 @@ export default function Header(){
       <NavLink to={'/'} onClick={()=> cleanSearch()}><img src={brandLogo}  style={{width:150+'px'}} alt='brandLogo'/></NavLink>
       <CatalogProducts/>
       <SearchInput/>
-      <div className="position-relative">
+      <div className="d-flex">
          <NavLink to={"/favorite"}><img src={favoriteLogo} style={{width: 100 + "px"}} alt='favoriteLogo'/></NavLink>
-        {favCount!=0 && <span className=" p-2  position-absolute top-0 start-100 bg-secondary rounded-circle ">{favCount}</span>}
+        {favCount!=0 && <span className=" p-2  bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center w-25 h-25">{favCount}</span>}
       </div>
       {user.firstName? 
         <div className="position-relative">
@@ -48,9 +48,9 @@ export default function Header(){
         <NavLink to={"/authorithation"}><img src={logInlogo} style={{width: 100 + "px"}} alt='authLogo'/></NavLink>
       }
       
-      <div className="position-relative">
+      <div className="d-flex">
         <NavLink to={"/cart"}><img src={logoCart}  style={{width: 100 + "px"}} alt='cartLogo'/> </NavLink>
-        {cartCount!=0 && <span className=" p-2  position-absolute top-0 start-100 bg-secondary rounded-circle ">{cartCount}</span>}
+        {cartCount!=0 && <span className=" p-2 bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center w-25 h-25">{cartCount}</span>}
       </div>
       
     </header>

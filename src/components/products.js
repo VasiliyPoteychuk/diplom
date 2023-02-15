@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts, productsSelect, statusSelect } from "../store/productsSlice"
-import Card from "./card"
-import Header from "../header/header"
+import Card from "../helpers/card"
+import Header from "./header"
 import { searchDataSelect, searchItemsSelect, searchProduct } from "../store/searchSlice"
 
 export default function Products(){

@@ -3,8 +3,8 @@ import {
 } from "react-router-dom";
 import Products from "./components/products";
 import Product from "./components/product";
-import Cart from "./header/cart"
-import ProductsInCategory from "./header/productsInCategory";
+import Cart from "./components/cart";
+import ProductsInCategory from './components/productsInCategory'
 import Favorite from "./components/favourite";
 import Authorization from "./auth/authForm";
 

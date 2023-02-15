@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { deleteFavorite, favoriteSelect } from "../store/favoriteSlice";
-import Rating from "./rating";
-import AddToCart from "./addToCard";
-import Header from "../header/header";
-import BackButton from "./backButton";
+import Rating from "../helpers/rating";
+import AddToCart from "../helpers//addToCard";
+import Header from "../components/header";
+import BackButton from "../helpers/backButton";
 
 export default function Favorite(){
   const favoriteList = useSelector(favoriteSelect);

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, NavLink} from "react-router-dom";
 import productApi from '../api/productsAPI';
-import AddToCart from "./addToCard";
-import Header from "../header/header";
-import Rating from "./rating";
+import AddToCart from "../helpers/addToCard";
+import Header from "./header";
+import Rating from "../helpers/rating";
 import { useDispatch } from "react-redux";
 import { addFavorite } from "../store/favoriteSlice";
 
@@ -44,7 +44,7 @@ export default function Product(){
             <p>Скидка: {product.discountPercentage}%</p>
             <p>Цена: {product.price}$</p>
             <p>В наличии: {product.stock}</p>
-            <p>Рейтинг: <Rating value={product.rating}/></p>
+            <div>Рейтинг: <Rating value={product.rating}/></div>
             
             <div className="btn-group gap-1">
               <AddToCart product={product}/>

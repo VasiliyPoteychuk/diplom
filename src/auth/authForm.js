@@ -11,9 +11,9 @@ export default function Authorization(){
   const user = useSelector(userSelect);
 
   return(
-    <div className="auth-form">
+    <div className="auth-form d-flex flex-column gap-3">
       <div className="d-flex justify-content-between align-items-center">
-        {active ? <button className="btn btn-primary" onClick={()=> setActive(!active)}>Регистрация</button>:<button className="btn btn-primary" onClick={()=> setActive(!active)}>Авторизация</button>}
+        {active ? <button className="btn btn-secondary" onClick={()=> setActive(!active)}>Регистрация</button>:<button className="btn btn-secondary" onClick={()=> setActive(!active)}>Авторизация</button>}
         <NavLink to={"/"}><button type="button" className="btn-close" /></NavLink>
       </div>
       

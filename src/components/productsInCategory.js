@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Header from "./header";
 import productApi from '../api/productsAPI';
 import { useParams } from "react-router-dom";
-import Card from "../components/card";
-import BackButton from "../components/backButton";
+import Card from "../helpers/card";
+import BackButton from "../helpers/backButton";
 
 export default function ProductsInCategory(){
   const {cat} = useParams();
