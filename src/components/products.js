@@ -10,7 +10,7 @@ export default function Products(){
   const products = useSelector(productsSelect);
   const status = useSelector(statusSelect);
   const searchData = useSelector(searchDataSelect);
-  const foundedProducts = useSelector(searchItemsSelect)
+  const foundedProducts = useSelector(searchItemsSelect);
   const dispatch = useDispatch();
   const cat=[];
   products.map(prod => cat.push(prod.category));

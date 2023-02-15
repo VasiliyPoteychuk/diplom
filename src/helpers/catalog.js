@@ -14,7 +14,7 @@ export default function CatalogProducts(){
   
   
   return(
-    <div className="dropdown" >
+    <div className="dropdown">
       <img src={categoryLogo} onClick={()=> setActive(!active)} style={{width:100+'px'}} alt='categoryLogo'/>
       {active && <ul className="catalogList bg-dark rounded p-3">
         {categories.map(el=>
