@@ -28,12 +28,12 @@ export default function Product(){
     <div>
       <Header/>
       <div className="d-flex justify-content-center">
-        <div className="d-flex flex-column align-items-center  m-5 p-3 rounded shadow">
+        <div className="d-flex flex-column align-items-center  m-5 p-3 rounded shadow w-25">
           <div>
             <img src={pic} alt='pictures' style={{width: 500 + 'px', height: 500 + 'px'}}/>
-            <div>
+            <div className="d-flex justify-content-around">
               {picture.map(im=> 
-                  <img key={im.id} src={im}  style={{width:100 + "px"}} onClick={()=>setPic(im)} alt='productImg'/>
+                  <img key={im.id} src={im}   style={{width:100+"px", height:100+'px'}} onClick={()=>setPic(im)} alt='productImg'/>
               )}
             </div>
           </div>
