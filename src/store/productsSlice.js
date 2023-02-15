@@ -4,6 +4,7 @@ import productsApi from '../api/productsAPI';
 const initialState = {
   items: [],
   status: null,
+  catalog: false,
   
 }
 
@@ -19,6 +20,9 @@ export const productsSlice = createSlice({
   name:'products',
   initialState,
   reducers: {
+    changeCatalog: (state, action) => {
+      state.catalog = action.payload
+    }
 
   },
   extraReducers: (builder) => {
@@ -33,5 +37,7 @@ export const productsSlice = createSlice({
 })
 
 export const productsSelect = (state) => state.products.items;
+export const catActiveSelect = (state) => state.products.catalog;
 export const statusSelect = (state) => state.products.status;
+export const {changeCatalog} = productsSlice.actions;
 export default productsSlice.reducer
