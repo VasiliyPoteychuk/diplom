@@ -5,6 +5,7 @@ import Rating from "../helpers/rating";
 import AddToCart from "../helpers//addToCard";
 import Header from "../components/header";
 import BackButton from "../helpers/backButton";
+import Footer from "./footer";
 
 export default function Favorite(){
   const favoriteList = useSelector(favoriteSelect);
@@ -38,6 +39,7 @@ export default function Favorite(){
           </div>
         }
       </div>
+      <Footer/>
     </div>
   )
 };

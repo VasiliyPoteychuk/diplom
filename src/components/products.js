@@ -4,6 +4,7 @@ import { fetchProducts, productsSelect, statusSelect } from "../store/productsSl
 import Card from "../helpers/card"
 import Header from "./header"
 import { searchDataSelect, searchItemsSelect, searchProduct } from "../store/searchSlice"
+import Footer from "./footer"
 
 export default function Products(){
   const products = useSelector(productsSelect);
@@ -38,17 +39,16 @@ export default function Products(){
       {status === 'loading' && <h1 className="  auth-form" role='alert'>Загрузка</h1>}
       <Header/>
       {foundedProducts.length>0 ? 
-        <div className="w-75  m-auto  d-flex flex-wrap gap-5 ">
+        <div className="w-75  m-auto  d-flex flex-wrap gap-5 mb-5">
           {foundedProducts.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
         :
-         <div className="w-75  m-auto  d-flex flex-wrap gap-5 ">
+         <div className="w-75  m-auto  d-flex flex-wrap gap-5 mb-5">
           {products.map(el=><Card key={el.id}  product={el}/>)}          
         </div>
       }
      
-      
+      <Footer/>
     </div>
-    
   )
 }

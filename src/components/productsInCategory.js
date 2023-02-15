@@ -4,6 +4,7 @@ import productApi from '../api/productsAPI';
 import { useParams } from "react-router-dom";
 import Card from "../helpers/card";
 import BackButton from "../helpers/backButton";
+import Footer from "./footer";
 
 export default function ProductsInCategory(){
   const {cat} = useParams();
