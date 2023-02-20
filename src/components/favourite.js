@@ -6,13 +6,15 @@ import AddToCart from "../helpers//addToCard";
 import Header from "../components/header";
 import BackButton from "../helpers/backButton";
 import Footer from "./footer";
+import {changeCatalog} from "../store/productsSlice";
+
 
 export default function Favorite(){
   const favoriteList = useSelector(favoriteSelect);
   const dispatch = useDispatch();
 
   return(
-    <div>
+    <div  onClick={(e)=> dispatch(changeCatalog(e.target))}>
       <Header/>
       {favoriteList.length>0 && <BackButton/>}
       <div className="d-flex flex-wrap " style={{marginLeft:150+'px'}}>

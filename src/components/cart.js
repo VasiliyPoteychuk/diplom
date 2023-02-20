@@ -7,6 +7,7 @@ import { addFavorite } from "../store/favoriteSlice";
 import { userSelect } from "../store/usersSlice";
 import { useState } from "react";
 import BackButton from "../helpers/backButton";
+import {changeCatalog} from "../store/productsSlice";
 
 export default function Cart(){
   const cartList = useSelector(cartSelect);
@@ -23,7 +24,7 @@ export default function Cart(){
   }
 
   return(
-    <div className="d-flex flex-column gap-4 ">
+    <div className="d-flex flex-column gap-4 "  onClick={(e)=> dispatch(changeCatalog(e.target))}>
       <Header/>
       <div className="d-flex justify-content-evenly shadow bg-light ">
         <h2>количество покупок: {countShoping}</h2>

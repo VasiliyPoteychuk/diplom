@@ -21,7 +21,11 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     changeCatalog: (state, action) => {
-      state.catalog = action.payload
+      if(action.payload=== document.querySelector('.burgerMenu')){
+        state.catalog= !state.catalog
+      }else{
+        state.catalog=false
+      }
     }
 
   },

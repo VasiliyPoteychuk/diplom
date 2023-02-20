@@ -1,10 +1,11 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchProducts, productsSelect, statusSelect } from "../store/productsSlice"
-import Card from "../helpers/card"
-import Header from "./header"
-import { searchDataSelect, searchItemsSelect, searchProduct } from "../store/searchSlice"
-import Footer from "./footer"
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, productsSelect, statusSelect } from "../store/productsSlice";
+import Card from "../helpers/card";
+import Header from "./header";
+import { searchDataSelect, searchItemsSelect, searchProduct } from "../store/searchSlice";
+import Footer from "./footer";
+import { changeCatalog } from "../store/productsSlice";
 
 export default function Products(){
   const products = useSelector(productsSelect);
@@ -30,12 +31,8 @@ export default function Products(){
     dispatch(fetchProducts())
   },[dispatch])
 
-  
-   
-  
-
   return(
-    <div className="root position-relative " >
+    <div className="root position-relative " onClick={(e)=> dispatch(changeCatalog(e.target))}>
       {status === 'loading' && <h1 className="  auth-form" role='alert'>Загрузка</h1>}
       <Header/>
       {foundedProducts.length>0 ? 

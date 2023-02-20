@@ -6,6 +6,7 @@ import Header from "./header";
 import Rating from "../helpers/rating";
 import { useDispatch } from "react-redux";
 import { addFavorite } from "../store/favoriteSlice";
+import {changeCatalog} from "../store/productsSlice"
 
 export default function Product(){
   const [product, setProduct] = useState({});
@@ -25,7 +26,7 @@ export default function Product(){
   },[id]);
 
   return(
-    <div>
+    <div onClick={(e)=> dispatch(changeCatalog(e.target))}>
       <Header/>
       <div className="d-flex justify-content-center">
         <div className="d-flex flex-column align-items-center  m-5 p-3 rounded shadow w-25">
